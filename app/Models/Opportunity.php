@@ -7,6 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Opportunity extends Model
 {
-    /** @use HasFactory<\Database\Factories\OpportunityFactory> */
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function itineraries(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Itinerary::class);
+    }
+
+    public function client()
+    {
+        return $this->belongsTo(Contact::class,'client_id', 'id');
+    }
 }

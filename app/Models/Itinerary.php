@@ -7,6 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Itinerary extends Model
 {
-    /** @use HasFactory<\Database\Factories\ItineraryFactory> */
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function opportunity()
+    {
+        return $this->belongsTo(Opportunity::class);
+    }
+
+    public function itineraryItems()
+    {
+        return $this->hasMany(ItineraryItem::class);
+    }
 }

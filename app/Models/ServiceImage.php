@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class ServiceImage extends Model
 {
-    /** @use HasFactory<\Database\Factories\ServiceImageFactory> */
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function service(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Service::class);
+    }
 }

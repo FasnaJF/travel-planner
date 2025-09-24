@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class AccommodationTypeImage extends Model
 {
-    /** @use HasFactory<\Database\Factories\AccommodationTypeImageFactory> */
     use HasFactory;
+
+    public function accommodationType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(AccommodationType::class);
+    }
 }

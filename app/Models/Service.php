@@ -7,6 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    /** @use HasFactory<\Database\Factories\ServiceFactory> */
     use HasFactory;
+    protected $guarded = [];
+
+    public function provider(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Provider::class);
+    }
+
+    public function serviceImages(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ServiceImage::class);
+    }
+
+    public function itineraryItems()
+    {
+        return $this->hasMany(ItineraryItem::class);
+    }
 }

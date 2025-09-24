@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class AccommodationOption extends Model
 {
-    /** @use HasFactory<\Database\Factories\AccommodationOptionFactory> */
     use HasFactory;
+
+    public function accommodationType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(AccommodationType::class);
+    }
+
+    public function itineraryItems()
+    {
+        return $this->hasMany(ItineraryItem::class);
+    }
 }
