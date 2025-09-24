@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Filament\Resources\ServiceImages\Schemas;
+
+use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Schema;
+
+class ServiceImageInfolist
+{
+    public static function configure(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                TextEntry::make('service.name')
+                    ->numeric(),
+                TextEntry::make('alt_text'),
+                TextEntry::make('created_at')
+                    ->dateTime(),
+                TextEntry::make('updated_at')
+                    ->dateTime(),
+            ]);
+    }
+}
