@@ -17,8 +17,8 @@ class ServicesTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('provider.id')
-                    ->numeric()
+                TextColumn::make('provider.account.name')
+                ->label('Provider Name')
                     ->sortable(),
                 TextColumn::make('price')
                     ->money()

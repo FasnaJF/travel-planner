@@ -23,4 +23,9 @@ class AccommodationType extends Model
     {
         return $this->hasMany(ItineraryItem::class);
     }
+
+    public function accommodationTypeImages(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(AccommodationTypeImage::class);
+    }
 }

@@ -16,14 +16,31 @@ class ItineraryItemForm
                 TextInput::make('itinerary_id')
                     ->required()
                     ->numeric(),
-                TextInput::make('item_type')
-                    ->required(),
-                TextInput::make('service_id')
-                    ->numeric(),
-                TextInput::make('accommodation_type_id')
-                    ->numeric(),
-                TextInput::make('accommodation_option_id')
-                    ->numeric(),
+                \Filament\Forms\Components\Select::make('item_type')
+                    ->options([
+                        'service' => 'Service',
+                        'accommodation' => 'Accommodation',
+                    ])
+                    ->label('Item Type')
+                    ->required()
+                    ->reactive(),
+                \Filament\Forms\Components\Select::make('service_id')
+                    ->relationship('service', 'name')
+                    ->searchable()
+                    ->visible(fn ($livewire, $get) => $get('item_type') === 'service')
+                    ->live(),
+
+                \Filament\Forms\Components\Select::make('accommodation_type_id')
+                    ->relationship('accommodationType', 'name')
+                    ->searchable()
+                    ->visible(fn ($livewire, $get) => $get('item_type') === 'accommodation')
+                    ->live(),
+
+                \Filament\Forms\Components\Select::make('accommodation_option_id')
+                    ->relationship('accommodationOption', 'name')
+                    ->searchable()
+                    ->visible(fn ($livewire, $get) => $get('item_type') === 'accommodation')
+                    ->live(),
                 DateTimePicker::make('start_date')
                     ->required(),
                 DateTimePicker::make('end_date')

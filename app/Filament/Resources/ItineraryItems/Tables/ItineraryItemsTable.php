@@ -15,18 +15,20 @@ class ItineraryItemsTable
     {
         return $table
             ->columns([
-                TextColumn::make('itinerary_id')
+                TextColumn::make('itinerary.name')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('item_type')
-                    ->searchable(),
-                TextColumn::make('service_id')
+                    ->searchable()
+                    ->formatStateUsing(fn ($state) => ucfirst(($state)))
+                    ->sortable(),
+                TextColumn::make('service.name')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('accommodation_type_id')
+                TextColumn::make('accommodationType.name')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('accommodation_option_id')
+                TextColumn::make('accommodationOption.name')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('start_date')
