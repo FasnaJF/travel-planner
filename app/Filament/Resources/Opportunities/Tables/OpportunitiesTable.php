@@ -17,8 +17,9 @@ class OpportunitiesTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('client_id')
-                    ->numeric()
+                TextColumn::make('client_full_name')
+                    ->label('Client Name')
+                    ->getStateUsing(fn ($record) => $record->client->first_name . ' ' . $record->client->last_name)
                     ->sortable(),
                 TextColumn::make('status')
                     ->searchable(),
@@ -34,10 +35,10 @@ class OpportunitiesTable
                 TextColumn::make('duration')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('created_by')
+                TextColumn::make('creator.name')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('updated_by')
+                TextColumn::make('updator.name')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('created_at')

@@ -12,8 +12,9 @@ class OpportunityInfolist
         return $schema
             ->components([
                 TextEntry::make('name'),
-                TextEntry::make('client_id')
-                    ->numeric(),
+                TextEntry::make('client_full_name')
+                    ->label('Client Name')
+                    ->getStateUsing(fn ($record) => $record->client->first_name . ' ' . $record->client->last_name),
                 TextEntry::make('status'),
                 TextEntry::make('total_amount')
                     ->numeric(),
@@ -23,10 +24,8 @@ class OpportunityInfolist
                     ->dateTime(),
                 TextEntry::make('duration')
                     ->numeric(),
-                TextEntry::make('created_by')
-                    ->numeric(),
-                TextEntry::make('updated_by')
-                    ->numeric(),
+                TextEntry::make('creator.name'),
+                TextEntry::make('updator.name'),
                 TextEntry::make('created_at')
                     ->dateTime(),
                 TextEntry::make('updated_at')
