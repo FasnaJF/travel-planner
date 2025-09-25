@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -18,6 +19,10 @@ class ServiceImagesTable
                 TextColumn::make('service.name')
                     ->numeric()
                     ->sortable(),
+                    ImageColumn::make('image_url')
+            ->label('Image')
+            // ->circular() // Optional: Makes the image circular
+            ->square() ,
                 TextColumn::make('alt_text')
                     ->searchable(),
                 TextColumn::make('created_at')

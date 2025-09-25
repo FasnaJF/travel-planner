@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\ServiceImages\Schemas;
 
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -16,7 +17,13 @@ class ServiceImageForm
                 Select::make('service_id')
                     ->relationship('service', 'name')
                     ->required(),
-                Textarea::make('image_url')
+                FileUpload::make('image_url')
+                    ->label('Image')
+                    ->image()
+                    ->directory('uploads/images/services') // where to store
+                    ->visibility('public') // for public access
+                    ->maxSize(2048) // 2MB
+                    ->imagePreviewHeight('200')
                     ->required()
                     ->columnSpanFull(),
                 TextInput::make('alt_text'),
