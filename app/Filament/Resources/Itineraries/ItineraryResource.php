@@ -6,6 +6,7 @@ use App\Filament\Resources\Itineraries\Pages\CreateItinerary;
 use App\Filament\Resources\Itineraries\Pages\EditItinerary;
 use App\Filament\Resources\Itineraries\Pages\ListItineraries;
 use App\Filament\Resources\Itineraries\Pages\ViewItinerary;
+use App\Filament\Resources\Itineraries\RelationManagers\ItineraryItemsRelationManager;
 use App\Filament\Resources\Itineraries\Schemas\ItineraryForm;
 use App\Filament\Resources\Itineraries\Schemas\ItineraryInfolist;
 use App\Filament\Resources\Itineraries\Tables\ItinerariesTable;
@@ -40,7 +41,7 @@ class ItineraryResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ItineraryItemsRelationManager::class,
         ];
     }
 

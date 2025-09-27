@@ -16,7 +16,9 @@ class ProvidersTable
         return $table
             ->columns([
                 TextColumn::make('account.name')
-                    ->numeric()
+                    ->label('Account Name')
+                    ->url(fn($record) => route('filament.admin.resources.accounts.view', ['record' => $record->account_id]))
+                    ->openUrlInNewTab()
                     ->sortable(),
                 TextColumn::make('service_type')
                     ->searchable(),

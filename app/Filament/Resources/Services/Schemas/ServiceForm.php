@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Services\Schemas;
 
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -29,6 +31,23 @@ class ServiceForm
                     ->required()
                     ->numeric()
                     ->default(0),
+                // Add repeater for images
+                Repeater::make('serviceImages')
+                    ->relationship() // automatically binds to hasMany
+                    ->schema([
+                        FileUpload::make('image_url')
+                            ->label('Image')
+                            ->image()
+                            ->disk('public')
+                            ->directory('services')
+                            ->required()
+                            ->preserveFilenames() // optional
+                            ->maxSize(2048) // optional
+                    ])
+                    ->minItems(1)
+                    ->label('Service Images')
+                    ->columns(1),
+
             ]);
     }
 }

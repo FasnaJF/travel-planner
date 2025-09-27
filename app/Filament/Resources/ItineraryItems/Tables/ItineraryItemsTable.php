@@ -20,7 +20,7 @@ class ItineraryItemsTable
                     ->sortable(),
                 TextColumn::make('item_type')
                     ->searchable()
-                    ->formatStateUsing(fn ($state) => ucfirst(($state)))
+                    ->formatStateUsing(fn($state) => ucfirst(($state)))
                     ->sortable(),
                 TextColumn::make('service.name')
                     ->numeric()
@@ -60,6 +60,7 @@ class ItineraryItemsTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->emptyStateHeading('No itinerary items yet');;
     }
 }

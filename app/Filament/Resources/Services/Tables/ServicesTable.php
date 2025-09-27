@@ -18,7 +18,9 @@ class ServicesTable
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('provider.account.name')
-                ->label('Provider Name')
+                    ->label('Provider Name')
+                    ->url(fn($record) => route('filament.admin.resources.accounts.view', ['record' => $record->provider->account_id]))
+                    ->openUrlInNewTab()
                     ->sortable(),
                 TextColumn::make('price')
                     ->money()

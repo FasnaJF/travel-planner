@@ -5,7 +5,9 @@ namespace App\Filament\Resources\Services\Schemas;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\RepeatableEntry;
 use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Schema;
+use Filament\Infolists\Components\ViewEntry;
 
 class ServiceInfolist
 {
@@ -23,19 +25,14 @@ class ServiceInfolist
                     ->dateTime(),
                 TextEntry::make('updated_at')
                     ->dateTime(),
-                RepeatableEntry::make('serviceImages')
-                    ->schema([
-                        TextEntry::make('service.name')
-                            ->numeric(),
-                        ImageEntry::make('image_url')
-                            ->label('Image')
-                            ->square()
-                            ->imageWidth(250)
-                            ->imageHeight(250),
-                        // TextEntry::make('alt_text'),
-                    ])
-                    ->columns(2) // number of columns in a row
+
+                ViewEntry::make('serviceImages')
+                    ->label('Service Images')
+                    ->view('infolists.components.service-images-grid')
+                    ->columns(2)
                     ->columnSpanFull()
+
+
             ]);
     }
 }

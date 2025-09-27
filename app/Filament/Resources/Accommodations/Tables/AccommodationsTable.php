@@ -16,7 +16,8 @@ class AccommodationsTable
         return $table
             ->columns([
                 TextColumn::make('account.name')
-                    ->numeric()
+                    ->url(fn($record) => route('filament.admin.resources.accounts.view', ['record' => $record->account_id]))
+                    ->openUrlInNewTab()
                     ->sortable(),
                 TextColumn::make('rating')
                     ->numeric()

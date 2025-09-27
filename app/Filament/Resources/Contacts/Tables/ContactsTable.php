@@ -23,11 +23,14 @@ class ContactsTable
                     ->label('Email address')
                     ->searchable(),
                 TextColumn::make('phone')
-                    ->searchable(),
+                    ->searchable()
+                    ->url(fn($record) => 'tel:' . $record->phone)
+                    ->openUrlInNewTab(false),
                 TextColumn::make('contact_type')
                     ->searchable(),
                 TextColumn::make('account.name')
-                    ->numeric()
+                    ->url(fn($record) => route('filament.admin.resources.accounts.view', ['record' => $record->account_id]))
+                    ->openUrlInNewTab()
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
