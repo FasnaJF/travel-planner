@@ -6,6 +6,7 @@ use App\Filament\Resources\AccommodationTypes\Pages\CreateAccommodationType;
 use App\Filament\Resources\AccommodationTypes\Pages\EditAccommodationType;
 use App\Filament\Resources\AccommodationTypes\Pages\ListAccommodationTypes;
 use App\Filament\Resources\AccommodationTypes\Pages\ViewAccommodationType;
+use App\Filament\Resources\AccommodationTypes\RelationManagers\AccommodationTypeImageRelationManager;
 use App\Filament\Resources\AccommodationTypes\Schemas\AccommodationTypeForm;
 use App\Filament\Resources\AccommodationTypes\Schemas\AccommodationTypeInfolist;
 use App\Filament\Resources\AccommodationTypes\Tables\AccommodationTypesTable;
@@ -40,7 +41,7 @@ class AccommodationTypeResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            AccommodationTypeImageRelationManager::class,
         ];
     }
 

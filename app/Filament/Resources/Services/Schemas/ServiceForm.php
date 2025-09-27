@@ -39,10 +39,16 @@ class ServiceForm
                             ->label('Image')
                             ->image()
                             ->disk('public')
-                            ->directory('services')
+                            ->directory('uploads/images/services')
+                            ->visibility('public')
+                            ->imageEditor()
+                            ->imageEditorAspectRatios([
+                                '16:9',
+                                '4:3',
+                                '1:1',
+                            ])
                             ->required()
-                            ->preserveFilenames() // optional
-                            ->maxSize(2048) // optional
+                            ->maxSize(5120) // 5MB
                     ])
                     ->minItems(1)
                     ->label('Service Images')

@@ -9,6 +9,13 @@ class AccommodationOption extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'accommodation_type_id',
+        'name',
+        'description',
+        'price_adjustment',
+    ];
+
     public function accommodationType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(AccommodationType::class);

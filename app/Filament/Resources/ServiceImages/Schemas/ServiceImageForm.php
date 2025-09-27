@@ -20,9 +20,16 @@ class ServiceImageForm
                 FileUpload::make('image_url')
                     ->label('Image')
                     ->image()
-                    ->directory('uploads/images/services') // where to store
-                    ->visibility('public') // for public access
-                    ->maxSize(2048) // 2MB
+                    ->disk('public')
+                    ->directory('uploads/images/services')
+                    ->visibility('public')
+                    ->imageEditor()
+                    ->imageEditorAspectRatios([
+                        '16:9',
+                        '4:3',
+                        '1:1',
+                    ])
+                    ->maxSize(5120) // 5MB
                     ->imagePreviewHeight('200')
                     ->required()
                     ->columnSpanFull(),

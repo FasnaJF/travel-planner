@@ -9,7 +9,17 @@ class ItineraryItem extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'itinerary_id',
+        'item_type',
+        'service_id',
+        'accommodation_type_id',
+        'accommodation_option_id',
+        'start_date',
+        'end_date',
+        'details',
+        'price',
+    ];
 
     public function itinerary()
     {

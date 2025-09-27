@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -15,11 +16,18 @@ class AccommodationTypeImagesTable
     {
         return $table
             ->columns([
+                ImageColumn::make('image_url')
+                    ->label('Image')
+                    ->disk('public')
+                    ->square(),
                 TextColumn::make('accommodationType.name')
-                    ->numeric()
+                    ->label('Accommodation Type')
+                    ->searchable()
                     ->sortable(),
                 TextColumn::make('alt_text')
-                    ->searchable(),
+                    ->label('Alt Text')
+                    ->searchable()
+                    ->limit(50),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

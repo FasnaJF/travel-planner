@@ -9,6 +9,13 @@ class AccommodationTypeImage extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'accommodation_type_id',
+        'image_url',
+        'alt_text',
+    ];
+
+
     public function accommodationType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(AccommodationType::class);

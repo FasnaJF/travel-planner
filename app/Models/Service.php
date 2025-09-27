@@ -8,7 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+
+    protected $fillable = [
+        'name',
+        'provider_id',
+        'description',
+        'price',
+        'duration_minutes',
+    ];
 
     public function provider(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

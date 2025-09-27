@@ -81,6 +81,7 @@ class ItineraryItemInfolist
                             ->visible(fn($record) => $record->item_type !== 'service')
                             ->schema([
                                 ImageEntry::make('image_url')
+                                    ->disk('public')
                                     ->square()
                                     ->label('Image'),
                             ]),

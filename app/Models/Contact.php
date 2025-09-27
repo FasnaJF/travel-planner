@@ -9,7 +9,14 @@ class Contact extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'phone',
+        'contact_type',
+        'account_id',
+    ];
 
     public function account(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

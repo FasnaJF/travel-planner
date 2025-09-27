@@ -9,7 +9,17 @@ class Opportunity extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'client_id',
+        'status',
+        'total_amount',
+        'start_date',
+        'end_date',
+        'duration',
+        'created_by',
+        'updated_by',
+    ];
 
     public function itineraries(): \Illuminate\Database\Eloquent\Relations\HasMany
     {

@@ -16,6 +16,7 @@ class ServiceImageInfolist
                     ->numeric(),
                 ImageEntry::make('image_url')
                     ->label('Image')
+                    ->disk('public')
                     ->square()
                     ->imageWidth(250)
                     ->imageHeight(250),

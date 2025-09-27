@@ -9,7 +9,11 @@ class ServiceImage extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'service_id',
+        'image_url',
+        'alt_text',
+    ];
 
     public function service(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

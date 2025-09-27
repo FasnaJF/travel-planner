@@ -9,7 +9,12 @@ class Provider extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'account_id',
+        'service_type',
+        'rating',
+        'description',
+    ];
 
     public function account(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

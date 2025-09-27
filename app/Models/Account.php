@@ -9,7 +9,10 @@ class Account extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'account_type',
+    ];
 
     public function contacts()
     {

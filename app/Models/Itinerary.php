@@ -9,7 +9,12 @@ class Itinerary extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'start_date',
+        'end_date',
+        'duration',
+    ];
 
     public function opportunity()
     {

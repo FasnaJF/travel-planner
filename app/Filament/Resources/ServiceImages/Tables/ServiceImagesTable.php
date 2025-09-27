@@ -19,10 +19,10 @@ class ServiceImagesTable
                 TextColumn::make('service.name')
                     ->numeric()
                     ->sortable(),
-                    ImageColumn::make('image_url')
-            ->label('Image')
-            // ->circular() // Optional: Makes the image circular
-            ->square() ,
+                ImageColumn::make('image_url')
+                    ->label('Image')
+                    ->disk('public')
+                    ->square(),
                 TextColumn::make('alt_text')
                     ->searchable(),
                 TextColumn::make('created_at')
