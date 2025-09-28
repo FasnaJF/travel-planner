@@ -3,7 +3,10 @@
 namespace App\Filament\Resources\AccommodationTypes\Schemas;
 
 use Filament\Infolists\Components\IconEntry;
+use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\ViewEntry;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class AccommodationTypeInfolist
@@ -12,8 +15,7 @@ class AccommodationTypeInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('accommodation.id')
-                    ->numeric(),
+                TextEntry::make('accommodation.account.name'),
                 TextEntry::make('name'),
                 TextEntry::make('description'),
                 TextEntry::make('price_per_night')
@@ -26,6 +28,13 @@ class AccommodationTypeInfolist
                     ->dateTime(),
                 TextEntry::make('updated_at')
                     ->dateTime(),
+
+                ViewEntry::make('accommodationTypeImages')
+                    ->label('Accommodation Images')
+                    ->view('infolists.components.accommodation-images-grid')
+                    ->columns(2)
+                    ->columnSpanFull()
+
             ]);
     }
 }

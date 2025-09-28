@@ -16,8 +16,7 @@ class AccommodationTypesTable
     {
         return $table
             ->columns([
-                TextColumn::make('accommodation.id')
-                    ->numeric()
+                TextColumn::make('accommodation.account.name')
                     ->sortable(),
                 TextColumn::make('name')
                     ->searchable(),
